@@ -1,0 +1,42 @@
+﻿@model List<ELearningSystem.Models.User>
+@{
+    ViewBag.Title = "AddRole";
+    var peopleSelectList = new SelectList(Model.Select(m => new SelectListItem { Text = m.FullName, Value = m.Id.ToString() }), "Value", "Text");
+}
+
+@*<h2>Редактиране на правата за достъп: </h2>
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            @Html.DropDownList("StudentsDropdown", peopleSelectList, "Изберете")
+
+
+            <div>
+                <input class="col-lg-10" type="submit" value=@Resources.Resource.strSave />
+            </div>
+        </fieldset>
+    }*@
+@using (Html.BeginForm())
+{
+    for (var i = 0; i < Model.Count(); i++)
+    {
+        <table>
+            <tr>
+                <td>
+                    @Html.HiddenFor(it => it[i].Id)
+                    @Html.HiddenFor(it => it[i].UserName)
+                    @Html.HiddenFor(it => it[i].IsAdmin)
+                    @Html.DisplayFor(it => it[i].FullName)
+                    @Html.TextBoxFor(it => it[i].IsAdmin)
+                </td>
+                <td>
+                    @*   @Html.CheckBoxFor(it => it[i].IsAdmin, new { Style = "vertical-align:3px}" })*@
+                </td>
+            </tr>
+        </table>
+
+    }
+
+    <input id="Submit1" type="submit" value="submit" />
+
+}

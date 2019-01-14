@@ -1,0 +1,117 @@
+﻿@model ELearningSystem.Models.Lecture
+
+<h2>Добави лекция</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.Id)
+    <div>
+        @Html.Label("Курс: ")
+        @Html.DropDownListFor(m => m.CourseId, new SelectList(new ELearningSystem.Services.CourseService().GetAllCourses(), "Id", "Name"), "Избери", htmlAttributes: new { @class = "custom-class-for-width" })
+
+    </div>
+    <div style="width:900px;margin-bottom:10px;">
+
+        <div style="width:400px;margin-bottom:10px;float:left;">
+
+            <div class="editor-label">@Html.Label("Заглавие")</div>
+            <div class="editor-field">
+                <input class="form-control"
+                       id="Title"
+                       name="Title"
+                       type="text"
+                       placeholder="Име" />
+            </div>
+            <br />
+
+            <div class="editor-label">@Html.Label("Съдържание")</div>
+
+            <div>
+                @Html.TextAreaFor(model => model.Content, 20, 200, htmlAttributes: new { style = "width: 100%; max-width: 100%;" })
+                <span class="help-block">Въведете описание</span>
+            </div>
+        </div>
+        <br />
+        @*<div class="form-group">
+                <label class="control-label" for="textArea">Описание</label>
+                <div class="col-lg-10">
+                    @Html.TextAreaFor(model => model.Information, 10, 10, htmlAttributes: new { style = "width: 100%; max-width: 100%;" })
+                    <span class="help-block">Описание</span>
+                </div>
+            </div>*@
+
+
+        <div style="margin-top:20px; float:initial">
+            <input type="submit" value="Запази" style="width:400px; margin-top:30px;" />
+        </div>
+    </div>
+
+}
+
+@using (Html.BeginForm("UploadImage", "Lecture"))
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <input type="file" name="files" multiple="multiple" />
+        <input type="submit" value="Качи снимката" />
+    </div>
+}
+
+<br />
+<div class="progress progress-striped">
+    <div class="progress-bar progress-bar-success">0%</div>
+</div>
+
+
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+<style>
+    .custom-class-for-width {
+        width: 60%;
+        height: 30%;
+        max-height: 30%;
+        max-width: 60%;
+    }
+</style>
+<style>
+    .custom-class-for-label {
+        font-size: 20px;
+    }
+</style>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+<script src="http://malsup.github.com/jquery.form.js"></script>
+
+<script>
+    (function () {
+
+        var bar = $('.progress-bar');
+        var percent = $('.progress-bar');
+        var status = $('#status');
+
+        $('form').ajaxForm({
+            beforeSend: function () {
+                status.empty();
+                var percentVal = '0%';
+                bar.width(percentVal)
+                percent.html(percentVal);
+            },
+            uploadProgress: function (event, position, total, percentComplete) {
+                var percentVal = percentComplete + '%';
+                bar.width(percentVal)
+                percent.html(percentVal);
+            },
+            success: function () {
+                var percentVal = '100%';
+                bar.width(percentVal)
+                percent.html(percentVal);
+            },
+            complete: function (xhr) {
+                status.html(xhr.responseText);
+            }
+        });
+
+    })();
+</script>

@@ -1,0 +1,31 @@
+﻿@model ELearningSystem.Models.Course
+@{
+    ViewBag.Title = "AddCourse";
+}
+
+<h2>@Resources.Resource.strAddCourse</h2>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.Id)
+    <div class="form-group">
+
+        <div class="editor-label">@Html.LabelFor(s => s.Name)</div>
+        <div class="editor-field">
+            <input class="form-control"
+                   id="Name"
+                   name="Name"
+                   type="text"
+                   placeholder="Име" />
+            @Html.ValidationMessageFor(s => s.Name)
+        </div>
+        <br />
+        <label class="col-lg-10 control-label" for="textArea">@Resources.Resource.strCourseContent</label>
+        <div>
+            @Html.TextAreaFor(model => model.Summary, 10, 40, htmlAttributes: new { style = "width: 100%; max-width: 100%;" })
+            <span class="help-block">@Resources.Resource.strInsertCourseDescription</span>
+        </div>
+        <div>
+            <input class="col-lg-10" type="submit" value=@Resources.Resource.strSave />
+        </div>
+    </div>
+}

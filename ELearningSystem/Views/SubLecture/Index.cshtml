@@ -1,0 +1,78 @@
+﻿@model ELearningSystem.Models.Lecture
+@{
+    ViewBag.Title = "Index";
+
+    List<string> base6 = new List<string>();
+    List<string> imgSrc = new List<string>();
+
+    foreach (var image in Model.Images)
+    {
+        var base64 = Convert.ToBase64String(image.Data);
+        base6.Add(base64);
+        imgSrc.Add(String.Format("data:image/gif;base64,{0}", base64));
+    }
+}
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<div>
+    <h2>@Model.Title</h2>
+</div>
+
+@if (imgSrc.Count() > 0)
+{
+    <div class="w3-twothird" style="float:left">
+        <div id="mycarousel" class="carousel slide" data-ride="carousel" style=" width:500px; height:400px; ">
+            <ol class="carousel-indicators">
+                <li data-target="#mycarousel" data-slide-to="0" class="active" />
+
+                @for (int i = 1; i < imgSrc.Count(); i++)
+                {
+                    <li data-target="#mycarousel" data-slide-to="@i" />
+                }
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                @{
+                    string firstImage = imgSrc.FirstOrDefault();
+                    imgSrc.Remove(firstImage);
+                }
+                <div class="item active">
+                    <img src="@firstImage" style="width:500px; height:400px;" />
+                    <div class="carousel-caption">
+                        <p>1djfhsdjkfhsd</p>
+                    </div>
+                </div>
+                @foreach (var item in imgSrc)
+                {
+                    <div class="item">
+                        <img src="@item" style="width:500px; height:400px;" />
+                        <div class="carousel-caption">
+                            <p>1djfhsdjkfhsd</p>
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <a class="left carousel-control" href="#mycarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" />
+                <span class="sr-only">Предишен</span>
+            </a>
+            <a class="right carousel-control" href="#mycarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" />
+                <span class="sr-only">Следващ</span>
+            </a>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.DisplayFor(m => m.Content)
+</div>
+
+@if (User != null && User.Identity.IsAuthenticated && User.IsAdmin)
+{
+    <input class='button edit_recipient' type='button' value=@Resources.Resource.strEdit
+           onclick="location.href='@Url.Action("Edit", "Lecture", new { Model.Id }, null)'" />
+
+    <input class='button edit_recipient' type='button' value=@Resources.Resource.strDelete
+           onclick="location.href='@Url.Action("Delete", "Lecture", new { Model.Id, Model.CourseId}, null )'" />
+}

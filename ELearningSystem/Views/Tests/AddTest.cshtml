@@ -1,0 +1,90 @@
+﻿@model ELearningSystem.ViewModels.TestViewModel
+@{
+    /**/
+
+    ViewBag.Title = "AddTest";
+}
+
+@using (Html.BeginForm("AddTest", "Tests", FormMethod.Post))
+{
+    <input id="btnAdd" type="button" value="Добави отговор" onclick="AddTextBox()" />
+    <br />
+    <div class="editor-label">@Html.Label("Въпрос:")</div>
+    <div class="editor-field">
+        <input class="form-control"
+               id="Name"
+               name="Name"
+               type="text"
+               placeholder="Име" />
+        @Html.ValidationMessageFor(s => s.Name)
+    </div>
+    <br />
+    <br />
+    <div id="TextBoxContainer">
+        <!--Textboxes will be added here -->
+    </div>
+    <br />
+    <input type="submit" value="Submit" />
+}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+        function GetDynamicTextBox(value) {
+            var div = $("<div />");
+            var br = $("<br >");
+            var br1 = $("<br />");
+
+            var textBox1 = $("<input />").attr("type", "radio").attr("name", "DynamicTextBox");
+            if (value != null)
+                textBox1.val("true");
+            div.append(textBox1);
+
+            var textBox = $("<input />").attr("type", "textbox").attr("name", "DynamicTextBox");
+            textBox.val(value);
+            div.append(textBox);
+
+
+
+            var button = $("<input />").attr("type", "button").attr("value", "Премахни");
+            button.attr("onclick", "RemoveTextBox(this)");
+            div.append(button);
+
+            div.append(br);
+            div.append(br1);
+
+            return div;
+        }
+        function AddTextBox() {
+            var div = GetDynamicTextBox("");
+            $("#TextBoxContainer").append(div);
+        }
+
+        function RemoveTextBox(button) {
+            $(button).parent().remove();
+        }
+
+        $(function () {
+            var values = eval('@Html.Raw(ViewBag.Values)');
+            if (values != null) {
+                $("#TextBoxContainer").html("");
+                $(values).each(function () {
+                    $("#TextBoxContainer").append(GetDynamicTextBox(this));
+                });
+            }
+        });
+</script>
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+            $(function () {
+                alert("@ViewBag.Message")
+            });
+    </script>
+}
+<script type="text/javascript">
+    $(function () {
+        $('#btnRadio').click(function () {
+            var checkedradio = $('[name="DynamicTextBox"]:radio:checked').val();
+            $("#sel").html("Selected Value: " + checkedradio);
+        });
+    });
+</script>

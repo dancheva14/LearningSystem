@@ -1,0 +1,29 @@
+﻿@model IEnumerable<ELearningSystem.Models.Course>
+@{
+    ViewBag.Title = "Index";
+    int i = 0;
+}
+
+<h2>@Resources.Resource.strTests</h2>
+
+<h4>@Resources.Resource.strChooseCourseFromList</h4>
+
+
+<div style="display: inline-block; padding-top:20px">
+    @foreach (var item in Model)
+    {
+        <div class="test-icon">
+            <a href="@Url.Action( "Index", "Tests", new {item.Id}, null)">
+                <img src="~/Images/course-icon.jpg" style="height:70px" />
+                <p>@item.Name</p>
+            </a>
+        </div>
+        i++;
+        if (i % 5 == 0)
+        {
+            <br />
+
+        }
+    }
+</div>
+

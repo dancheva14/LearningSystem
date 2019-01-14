@@ -1,0 +1,15 @@
+﻿
+@model ELearningSystem.Models.TestResult
+@{
+    var myChart = new Chart(width: 300, height: 150)
+        .AddTitle("Диаграма на отговори на теста")
+        .AddSeries(
+            name: "TestResult",
+            xValue: new[] { "Верни отговори", "Грешни отговори", "Непопълнени отговори" },
+            yValues: new[] { Model.CorrectAnswers, Model.WrongAnswers, Model.EmptyAnswers })
+        .Write();
+}
+<div>
+    <img src="@Url.Action("StatusGraph", new { Model = @Model })" />
+</div>
+

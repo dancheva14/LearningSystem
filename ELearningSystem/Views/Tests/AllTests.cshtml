@@ -1,0 +1,27 @@
+﻿@model IEnumerable<ELearningSystem.Models.Test>
+@{
+    ViewBag.Title = "AllTests";
+    int i = 0;
+}
+
+<h2>@Resources.Resource.strTests</h2>
+
+<div style="display: inline-block; padding-top:20px">
+
+    @foreach (var item in Model)
+    {
+        <div class="test-icon">
+            @*<li>@Html.ActionLink(item.Title, "Index", "Tests", new {item.Id}, null)</li>*@
+            <a href="@Url.Action( "Index", "Tests", new {item.Id}, null)">
+                <img src="~/Images/testicon.jpg" style="height:70px" />
+                <p>@item.Title</p>
+            </a>
+        </div>
+        i++;
+        if (i % 3 == 0)
+        {
+            <br />
+
+        }
+    }
+</div>

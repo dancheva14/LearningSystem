@@ -1,0 +1,55 @@
+﻿@model ELearningSystem.Models.Test
+@{
+    ViewBag.Title = "InsertTest";
+}
+
+<h2>Създаване на тест</h2>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.Id)
+
+    <div style="width:900px;margin-bottom:10px;">
+        @Html.HiddenFor(m => m.Id)
+        <div>
+            @Html.Label("Курс: ")
+            @Html.DropDownListFor(m => m.CourseId, new SelectList(new ELearningSystem.Services.CourseService().GetAllCourses(), "Id", "Name"), "Избери", htmlAttributes: new { @class = "custom-class-for-width" })
+
+        </div>
+        <div style="width:400px;margin-bottom:10px;float:left;">
+
+            <div class="editor-label">@Html.Label("Заглавие")</div>
+            <div class="editor-field">
+                <input class="form-control"
+                       id="Title"
+                       name="Title"
+                       type="text"
+                       placeholder="Име" />
+            </div>
+            <br />
+
+            <div class="editor-label">@Html.Label("Брой въпроси")</div>
+            <div class="editor-field">
+                <input class="form-control"
+                       id="QuestionCount"
+                       name="QuestionCount"
+                       type="text"
+                       placeholder="Брой въпроси" />
+            </div>
+            <br />
+        </div>
+        <br />
+        @*<div class="form-group">
+                <label class="control-label" for="textArea">Описание</label>
+                <div class="col-lg-10">
+                    @Html.TextAreaFor(model => model.Information, 10, 10, htmlAttributes: new { style = "width: 100%; max-width: 100%;" })
+                    <span class="help-block">Описание</span>
+                </div>
+            </div>*@
+
+
+        <div style="margin-top:20px; float:initial">
+            <input type="submit" value="Продължи" style="width:400px; margin-top:30px;" />
+        </div>
+    </div>
+
+}

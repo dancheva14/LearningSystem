@@ -1,0 +1,21 @@
+﻿@model object
+
+@{
+    dynamic mod = Model;
+    var question = mod.GetType().GetProperty("question").GetValue(mod, null) as ELearningSystem.Model.Question;
+    var questionIndex = Convert.ToInt32(mod.GetType().GetProperty("index").GetValue(mod, null));
+}
+<div class="question">
+    <p>@question.Content</p>
+    <input type="hidden" name="Questions[@questionIndex].Answer" value="" />
+    <input type="hidden" name="Questions[@questionIndex].Id" value="" />
+    <div>
+        <ul>
+            @for (var i = 0; i < question.Answers.Count; i++)
+            {
+                @Html.Partial("_Answer", new { answerIndex = i + 1, questionIndex = questionIndex, answer = question.Answers[i] })
+            }
+        </ul>
+    </div>
+</div>
+

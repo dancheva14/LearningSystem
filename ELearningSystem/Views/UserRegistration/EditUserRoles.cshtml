@@ -1,0 +1,23 @@
+﻿@model IEnumerable<ELearningSystem.Models.User>
+@{
+    ViewBag.Title = "EditUserRoles";
+}
+
+<h2>Редактирай потребителските права</h2>
+
+@foreach (var user in Model)
+{
+    <div>
+        @Html.Label(user.UserName)
+        @if (user.IsAdmin)
+        {
+            @Html.Label(" - Потребителят е администратор - ")
+            <a href="@Url.Action("EditUserRoles1", "UserRegistration", new { id = user.Id}, null)">Направи обикновен потребител</a>
+        }
+        else
+        {
+            @Html.Label(" - Потребителят не е администратор - ")
+            <a href="@Url.Action("EditUserRoles", "UserRegistration", new { id = user.Id}, null)" style="margin-right: 10px; margin-left:10px;">Направи администратор</a>
+        }
+    </div>
+}

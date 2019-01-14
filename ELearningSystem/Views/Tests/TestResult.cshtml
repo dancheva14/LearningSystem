@@ -1,0 +1,46 @@
+﻿@model ELearningSystem.Models.TestResult
+@{ var gifPath = "";
+    gifPath = String.Format(@"../Content/{0}.gif", @Model.Status);
+    var imagePath = "";
+    if (@Model.Grade == "Слаб(2)")
+    { imagePath = String.Format(@"../Content/{0}.png", "Poor2"); }
+    else if (@Model.Grade == "Среден(3)")
+    { imagePath = String.Format(@"../Content/{0}.png", "Middle3"); }
+    else if (@Model.Grade == "Добър(4)")
+    { imagePath = String.Format(@"../Content/{0}.png", "Good4"); }
+    else if (@Model.Grade == "Много добър(5)")
+    { imagePath = String.Format(@"../Content/{0}.png", "VeryGood5"); }
+    else
+    { imagePath = String.Format(@"../Content/{0}.png", "Excellent6"); }
+}
+<div>
+    @Resources.Resource.strCorrectAnswers @Model.CorrectAnswers
+</div>
+<div>
+    @Resources.Resource.strWrongAnswers @Model.WrongAnswers
+</div>
+<div>
+    @Resources.Resource.strEmptyAnswers @Model.EmptyAnswers
+</div>
+<div>
+    @Resources.Resource.strProcent @Model.Procent %
+</div>
+@*<div>
+        @Html.Partial("_Chart")
+    </div>*@
+<div>
+    @Resources.Resource.strGrade
+    <img id="image" src="@imagePath" height="60" width="100" />
+</div>
+<div style="float: right; height: 120px; width: 400px; ">
+    <img id="image" src="@gifPath" />
+</div>
+
+
+
+@using (Html.BeginForm("CheckCorrectAnswers", "Tests", FormMethod.Post))
+{
+    <div style="margin-top:20px; float:initial">
+        <input type="submit" value="Провери верните отговори" style="width:400px; margin-top:30px;" />
+    </div>
+}

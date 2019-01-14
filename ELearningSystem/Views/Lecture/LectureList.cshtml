@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "LectureList";
+}
+@model IEnumerable<ELearningSystem.Models.Course>
+
+<h2>@Resources.Resource.strLectures</h2>
+@if (Model != null)
+{
+    using (Html.BeginForm())
+    {
+        <div>
+            <span>@ViewBag.Message</span>
+            <ul>
+                @*@if (Model.Count() > 1)
+                    {*@
+                @foreach (var item in Model)
+                {
+                    <li style="font-size:23px; list-style-type:none;">
+                        <img src="~/Images/courseicon.png" style="height:25px" />
+                        @Resources.Resource.strCourse @item.Name
+                    </li>
+                    @* <li style="font-size:17px; list-style-type:square;">@Resources.Resource.strLectures :</li>*@
+                    for (var i = 0; i < item.LectureList.Count(); i++)
+                    {
+                        @Html.Partial("_Lecture", new { index = i, lecture = item.LectureList[i] })
+                    }
+                }
+            </ul>
+        </div>
+    }
+}

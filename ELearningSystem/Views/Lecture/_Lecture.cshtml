@@ -1,0 +1,14 @@
+﻿@model object
+
+@{
+    dynamic mod = Model;
+    var lecture = mod.GetType().GetProperty("lecture").GetValue(mod, null) as ELearningSystem.Models.Lecture;
+    // var questionIndex = Convert.ToInt32(mod.GetType().GetProperty("index").GetValue(mod, null));
+}
+<div class="lecture">
+    <div>
+        <ul>
+            <li>@Html.ActionLink(lecture.Title, "Index", "Sublecture", new { lecture.Id }, null)</li>
+        </ul>
+    </div>
+</div>

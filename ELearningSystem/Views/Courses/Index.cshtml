@@ -1,0 +1,86 @@
+﻿@model IEnumerable<ELearningSystem.Models.Course>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Resources.Resource.strCourses</h2>
+
+@Html.Hidden("Get", Url.Action("Get", "Courses"))
+
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Потърси" title="Type in a name">
+@*<ul id="myUL">
+
+        @foreach (var item in Model)
+        {
+            @Html.Hidden("Id", @item.Id)
+            <li><a href="@Url.Action("Index", "Lecture", new { id = item.Id }, null)">@item.Name</a></li>
+        }
+
+    </ul>*@
+<table class="table">
+    <thead>
+        <tr id="myUL"></tr>
+    </thead>
+    <tbody id="tblInfo"></tbody>
+</table>
+
+
+<script>
+    function myFunction() {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("tblInfo");
+        li = ul.getElementsByTagName("li");
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+
+            }
+        }
+    }
+</script>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    #myInput {
+        background-image: url('/css/searchicon.jpg');
+        background-position: 10px 12px;
+        background-repeat: no-repeat;
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 20px 12px 40px;
+        border: 1px solid #ddd;
+        margin-bottom: 12px;
+    }
+
+    #myUL {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+        #myUL li a {
+            border: 1px solid #ddd;
+            margin-top: -1px; /* Prevent double borders */
+            background-color: #f6f6f6;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 15px;
+            color: black;
+            display: block
+        }
+
+            #myUL li a:hover:not(.header) {
+                background-color: #eee;
+            }
+</style>

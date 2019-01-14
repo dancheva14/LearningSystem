@@ -1,0 +1,50 @@
+﻿@model ELearningSystem.Models.Question
+@using ELearningSystem.Models
+@{
+    ViewBag.Title = "FillTable";
+
+}
+
+@using (Html.BeginForm())
+{
+    <div style="margin-bottom:10px;float:left;">
+
+        <div class="editor-label">@Html.Label("Въведете въпроса със съответните му отговори")</div>
+        <div class="editor-field">
+            <input class="form-control"
+                   style="min-width:700px;"
+                   id="Content"
+                   name="Content"
+                   type="text"
+                   placeholder="Въведете съдържанието на въпроса" />
+        </div>
+        <br />
+        @for (int i = 0; i < 4; i++)
+        {
+            <div style="width:750px;">
+                @Html.RadioButton("isChecked", i)
+                @Html.TextBoxFor(m => m.Answers[i].Content, htmlAttributes: new { @style = "min-width:680px;" })
+            </div>
+            <br></br>
+        }
+    </div>
+
+    <div style="">
+        <input type="submit" value="@ViewBag.SubmitValue" style="width:400px; margin-top:30px;" />
+    </div>
+
+}
+
+<style>
+    .custom-class-for-width {
+        width: 60%;
+        height: 30%;
+        max-height: 30%;
+        max-width: 60%;
+    }
+</style>
+<style>
+    .custom-class-for-textbox {
+        width: 800px;
+    }
+</style>

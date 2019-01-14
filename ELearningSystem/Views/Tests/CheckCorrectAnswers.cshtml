@@ -1,0 +1,24 @@
+﻿@model ELearningSystem.Models.Test
+@{
+    ViewBag.Title = "CheckCorrectAnswers";
+}
+
+@if (Model != null)
+{
+
+    <text>Тест: </text>
+    @Html.DisplayFor(m => m.Title)
+    @Html.HiddenFor(m => m.Id)
+
+    <div>
+        <ul>
+            @for (var i = 0; i < Model.Questions.Count; i++)
+            {
+                @Html.Partial("_Question", new { index = i, question = Model.Questions[i] })
+                @Html.HiddenFor(m => m.Questions[i].Id)
+            }
+        </ul>
+    </div>
+    <input type="submit" value=@Resources.Resource.strCheck />
+
+}
