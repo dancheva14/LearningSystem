@@ -41,8 +41,8 @@ namespace ELearningSystem.Controllers
         [HttpPost]
         public ActionResult Login(User user, string returnUrl)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 if (!String.IsNullOrEmpty(user.UserName))
                 {
                     var authenticatedUser = userService.GetUserByNameAndPass(user);
@@ -55,11 +55,11 @@ namespace ELearningSystem.Controllers
                         ModelState.AddModelError("", "Потребителското име и/или паролата са невалидни. Опитайте отново.");
                     }
                 }
-            }
-            else
-            {
-                ModelState.AddModelError("", "Login data is incorrect");
-            }
+            //}
+            //else
+            //{
+            //    ModelState.AddModelError("", "Login data is incorrect");
+            //}
             return View(user);
         }
 

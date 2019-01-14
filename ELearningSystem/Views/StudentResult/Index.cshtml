@@ -6,17 +6,17 @@
 {
 
     <li class="dropdown" style="height:33px;">
-        <a class="dropdown-toggle" role="button" aria-expanded="false" data-toggle="dropdown">@Resources.Resource.strSortBy <span class="glyphicon glyphicon-search"></span></a>
+        <a class="dropdown-toggle" role="button" aria-expanded="false" data-toggle="dropdown">@ELearningSystem.Resources.Resource.strSortBy <span class="glyphicon glyphicon-search"></span></a>
         <ul class="dropdown-menu" role="menu">
-            <li>@Html.ActionLink(@Resources.Resource.strDate, "IndexDate", "StudentResult")</li>
-            <li>@Html.ActionLink(@Resources.Resource.strName, "IndexName", "StudentResult")</li>
+            <li>@Html.ActionLink(@ELearningSystem.Resources.Resource.strDate, "IndexDate", "StudentResult")</li>
+            <li>@Html.ActionLink(@ELearningSystem.Resources.Resource.strName, "IndexName", "StudentResult")</li>
         </ul>
     </li>
 
 
     using (Html.BeginForm())
     {
-        <h3 style="height:30px">Ученик: @User.FullName</h3>
+    <h3 style="height:30px">Ученик: @(Session["User"] as ELearningSystem.Models.User).FullName</h3>
 
         <table id="t01">
             <tr>

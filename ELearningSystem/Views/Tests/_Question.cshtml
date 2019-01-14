@@ -2,7 +2,7 @@
 
 @{
     dynamic mod = Model;
-    var question = mod.GetType().GetProperty("question").GetValue(mod, null) as ELearningSystem.Model.Question;
+    var question = mod.GetType().GetProperty("question").GetValue(mod, null) as ELearningSystem.Models.Question;
     var questionIndex = Convert.ToInt32(mod.GetType().GetProperty("index").GetValue(mod, null));
 }
 <div class="question">

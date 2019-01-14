@@ -11,13 +11,13 @@ namespace ELearningSystem.Models
     {
         public int Id { get; set; }
 
-        //[Display(Name = "strCourseName", ResourceType = typeof(Resources.Resource))]
+        [Display(Name = "strCourseName", ResourceType = typeof(Resources.Resource))]
         public string Name { get; set; }
 
-       // [Display(Name = "strCourseContent", ResourceType = typeof(Resources.Resource))]
+        [Display(Name = "strCourseContent", ResourceType = typeof(Resources.Resource))]
         public string Summary { get; set; }
 
         public List<Lecture> LectureList { get; set; }
-        //test
+       
     }
 }

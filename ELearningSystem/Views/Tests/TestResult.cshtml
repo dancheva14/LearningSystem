@@ -14,22 +14,22 @@
     { imagePath = String.Format(@"../Content/{0}.png", "Excellent6"); }
 }
 <div>
-    @Resources.Resource.strCorrectAnswers @Model.CorrectAnswers
+    @ELearningSystem.Resources.Resource.strCorrectAnswers @Model.CorrectAnswers
 </div>
 <div>
-    @Resources.Resource.strWrongAnswers @Model.WrongAnswers
+    @ELearningSystem.Resources.Resource.strWrongAnswers @Model.WrongAnswers
 </div>
 <div>
-    @Resources.Resource.strEmptyAnswers @Model.EmptyAnswers
+    @ELearningSystem.Resources.Resource.strEmptyAnswers @Model.EmptyAnswers
 </div>
 <div>
-    @Resources.Resource.strProcent @Model.Procent %
+    @ELearningSystem.Resources.Resource.strProcent @Model.Procent %
 </div>
 @*<div>
         @Html.Partial("_Chart")
     </div>*@
 <div>
-    @Resources.Resource.strGrade
+    @ELearningSystem.Resources.Resource.strGrade
     <img id="image" src="@imagePath" height="60" width="100" />
 </div>
 <div style="float: right; height: 120px; width: 400px; ">

@@ -2,7 +2,7 @@
 @{
 
 }
-<h2>@Resources.Resource.strAddLecture</h2>
+<h2>@ELearningSystem.Resources.Resource.strAddLecture</h2>
 
 @using (Html.BeginForm("CoursesDropdown", "Lecture"))
 {
@@ -30,11 +30,11 @@
             @Html.Label("Съдържание на лекцията: ")
             <div>
                 @Html.TextAreaFor(model => model.Lecture.Content, 10, 40, htmlAttributes: new { style = "width: 100%; max-width: 100%;" })
-                <span class="help-block">@Resources.Resource.strInsertLectureDescription</span>
+                <span class="help-block">@ELearningSystem.Resources.Resource.strInsertLectureDescription</span>
             </div>
         </div>
         <div>
-            <input class="col-lg-10" type="submit" value="@Resources.Resource.strSave" />
+            <input class="col-lg-10" type="submit" value="@ELearningSystem.Resources.Resource.strSave" />
         </div>
     </div>
 }

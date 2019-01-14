@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Edit";
 }
-<h2>@Resources.Resource.strEditCourse</h2>
+<h2>@ELearningSystem.Resources.Resource.strEditCourse</h2>
 @using (Html.BeginForm())
 {
     <div>
@@ -19,14 +19,14 @@
             @Html.ValidationMessageFor(s => s.Name)
         </div>
 
-        <label class="col-lg-10 control-label" for="textArea">@Resources.Resource.strCourseContent</label>
+        <label class="col-lg-10 control-label" for="textArea">@ELearningSystem.Resources.Resource.strCourseContent</label>
         <div>
             @Html.TextAreaFor(model => model.Summary, 10, 40, htmlAttributes: new { style = "width: 100%; max-width: 100%;" })
-            <span class="help-block">@Resources.Resource.strInsertCourseDescription</span>
+            <span class="help-block">@ELearningSystem.Resources.Resource.strInsertCourseDescription</span>
         </div>
 
         <div>
-            <input class="col-lg-10" type="submit" value=@Resources.Resource.strSave />
+            <input class="col-lg-10" type="submit" value=@ELearningSystem.Resources.Resource.strSave />
         </div>
     </div>
 }

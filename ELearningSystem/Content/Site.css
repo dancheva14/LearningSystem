@@ -16,3 +16,109 @@ textarea {
     max-width: 280px;
 }
 
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.testTitle {
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+}
+
+.textLeftAlign {
+    text-align: left;
+}
+
+.titles {
+    font-weight: bold;
+    font-size: 13px;
+}
+
+
+#menu-toggle {
+    margin-right: 10px;
+    float: right;
+}
+
+.textLeftAlign {
+    float: left;
+}
+
+.course-name {
+    height: 200px;
+    width: 150px;
+}
+
+.height {
+    height: 50px;
+}
+
+.editor-field textarea {
+    width: 400px;
+    height: 100px;
+}
+
+.divider {
+    width: 5px;
+    height: auto;
+    display: inline-block;
+}
+
+div.jumbotron {
+    background: url(../Images/home_2.jpg);
+    background-size: cover;
+}
+
+.listStyle {
+    height: 7px;
+    list-style-type: square;
+}
+
+.courses-list {
+    float: left;
+    max-width: 45%;
+}
+
+#course-info-container {
+    float: right;
+    max-width: 45%;
+}
+
+.course-info-js {
+    cursor: pointer;
+}
+
+.login-button-container {
+    top: 515px;
+}
+
+.test-icon {
+    display: inline-block;
+    padding-right: 50px;
+    padding-bottom: 30px;
+    width: 150px;
+    vertical-align: top;
+}

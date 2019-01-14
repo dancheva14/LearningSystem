@@ -12,23 +12,23 @@ namespace ELearningSystem.Models
     {
         public int Id { get; set; }
 
-      //  [Display(Name = "strUserName", ResourceType = typeof(Resources.Resource))]
-       // [Required(ErrorMessageResourceName = "strUserNameError", ErrorMessageResourceType = typeof(Resources.Resource))]
+        [Display(Name = "strUserName", ResourceType = typeof(Resources.Resource))]
+        [Required(ErrorMessageResourceName = "strUserNameError", ErrorMessageResourceType = typeof(Resources.Resource))]
         public string UserName { get; set; }
 
         [StringLength(255, ErrorMessage = "Паролата трябва да е минимум 6 символа.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-       // [Display(Name = "strPassword", ResourceType = typeof(Resources.Resource))]
-       // [Required(ErrorMessageResourceName = "strPasswordError", ErrorMessageResourceType = typeof(Resources.Resource))]
+        [Display(Name = "strPassword", ResourceType = typeof(Resources.Resource))]
+        [Required(ErrorMessageResourceName = "strPasswordError", ErrorMessageResourceType = typeof(Resources.Resource))]
         public string Password { get; set; }
 
-       // [Display(Name = "strConfirmPassword", ResourceType = typeof(Resources.Resource))]
-        // [Required(ErrorMessage = "Полето потвърди парола е задължително.")]
-        // [StringLength(255, ErrorMessage = "Паролата трябва да е минимум 6 символа", MinimumLength = 6)]
+        [Display(Name = "strConfirmPassword", ResourceType = typeof(Resources.Resource))]
+         [Required(ErrorMessage = "Полето потвърди парола е задължително.")]
+         [StringLength(255, ErrorMessage = "Паролата трябва да е минимум 6 символа", MinimumLength = 6)]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
 
-        // [Required]
+        [Required]
         [Display(Name = "Име и фамилия")]
         public string FullName { get; set; }
 
@@ -43,7 +43,7 @@ namespace ELearningSystem.Models
         [Display(Name = "Дата на раждане")]
         public DateTime Date { get; set; }
 
-      //  [Display(Name = "strMail", ResourceType = typeof(Resources.Resource))]
+        [Display(Name = "strMail", ResourceType = typeof(Resources.Resource))]
         public string Email { get; set; }
 
         public IIdentity Identity
