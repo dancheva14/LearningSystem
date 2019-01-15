@@ -11,66 +11,61 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <span class="noti glyphicon glyphicon-bell"><span class="count">&nbsp;</span></span>
-                <div class="noti-content">
-                    <div class="noti-top-arrow"></div>
-                    <ul id="notiContent"></ul>
+    <nav class="navbar navbar-default">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <span class="noti glyphicon glyphicon-bell"><span class="count">&nbsp;</span></span>
+                    <div class="noti-content">
+                        <div class="noti-top-arrow"></div>
+                        <ul id="notiContent"></ul>
+                    </div>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#menu-toggle" id="menu-toggle" aria-hidden="true">
+                        <span class="glyphicon glyphicon-resize-horizontal custom" aria-hidden="true"></span>
+                    </a>
                 </div>
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Курсове", "Index", "Courses")</li>
+                        <li>@Html.ActionLink("Лекции", "LectureList", "Lecture")</li>
+                        <li>@Html.ActionLink("Тестове", "Index", "TestCourse")</li>
+                        <li>@Html.ActionLink("Резултати", "Index", "StudentResult")</li>
 
 
-                <a class="navbar-brand" href="#menu-toggle" id="menu-toggle" aria-hidden="true">
-                    <span class="glyphicon glyphicon-resize-horizontal custom" aria-hidden="true"></span>
-                </a>
+                        @if ((Session["User"] as ELearningSystem.Models.User) != null)
+                        {
+                            <li>@Html.ActionLink("Изход", "Logout", "UserRegistration")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Вход", "Login", "UserRegistration") </li>
+                            <li>@Html.ActionLink("Регистрация", "Registration", "UserRegistration")</li>
+                        }
+                        <li>
+                            <a href="@Url.Action("ChangeLanguage", "Language", new { SelectedLanguage = "En" })">
+                                <img src="~/Images/eng.png" style="height:25px" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("ChangeLanguage", "Language", new { SelectedLanguage = "Bg" })">
+                                <img src="~/Images/bg.png" style="height:25px" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                @*<div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav"></ul>
+                    </div>*@
             </div>
-
-
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Курсове", "Index", "Courses")</li>
-                    <li>@Html.ActionLink("Лекции", "LectureList", "Lecture")</li>
-                    <li>@Html.ActionLink("Тестове", "Index", "TestCourse")</li>
-                    <li>@Html.ActionLink("Резултати", "Index", "StudentResult")</li>
-
-
-                    @if ((Session["User"] as ELearningSystem.Models.User) != null )
-                    {
-                        <li>@Html.ActionLink("Изход", "Logout", "UserRegistration")</li>
-                    }
-                    else
-                    {
-                        <li>@Html.ActionLink("Вход", "Login", "UserRegistration") </li>
-                        <li>@Html.ActionLink("Регистрация", "Registration", "UserRegistration")</li>
-                    }
-                    <li>
-                        <a href="@Url.Action("ChangeLanguage", "Language", new { SelectedLanguage = "En" })">
-                            <img src="~/Images/eng.png" style="height:25px" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("ChangeLanguage", "Language", new { SelectedLanguage = "Bg" })">
-                            <img src="~/Images/bg.png" style="height:25px" />
-                        </a>
-                    </li>
-                </ul>
-
-            </div>
-
-
-
-            @*<div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav"></ul>
-                </div>*@
         </div>
-    </div>
+    </nav>
     <div class="container body-content">
         <div id="wrapper" class="toggled">
             <div id="sidebar-wrapper">
@@ -133,6 +128,8 @@
         <script src="~/Scripts/bootstrap.min.js"></script>
         @* Add css  *@
         <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        @Scripts.Render("~/bundles/custom")
+        @RenderSection("scripts", required: false)
         <style type="text/css">
             /*Added css for design notification area, you can design by your self*/
             /* COPY css content from youtube video description*/
