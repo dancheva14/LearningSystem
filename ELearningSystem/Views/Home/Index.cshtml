@@ -1,7 +1,30 @@
-﻿
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "Home Page";
 }
 
-<h2>Index</h2>
 
+<div class="jumbotron">
+    <h3>@ELearningSystem.Resources.Resource.strELearningSystem</h3>
+    <p class="lead"></p>
+    <p><a href="~/Home/About" class="btn btn-primary btn-lg">@ELearningSystem.Resources.Resource.strLearnMore &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h3>@ELearningSystem.Resources.Resource.strPossibilities</h3>
+        <p>
+            @ELearningSystem.Resources.Resource.strInformationHome
+        </p>
+        <p><a class="btn btn-default" href="~/Courses/Index">@ELearningSystem.Resources.Resource.strStart &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h3>@ELearningSystem.Resources.Resource.strPossibilities</h3>
+        <p>@ELearningSystem.Resources.Resource.strInformationHome2</p>
+        <p><a class="btn btn-default" href="~/Lecture/Index">@ELearningSystem.Resources.Resource.strLearnMore &raquo;</a></p>
+    </div>
+    @*<div class="col-md-4">
+            <h2>Web Hosting</h2>
+            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        </div>*@
+</div>

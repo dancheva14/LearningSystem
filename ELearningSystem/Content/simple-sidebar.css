@@ -61,7 +61,7 @@ body {
     margin: 10px;
     padding: 10px;
     list-style: none;
-    background-color: antiquewhite;
+    background-color: azure;
 }
 
     .sidebar-nav li {
@@ -112,7 +112,7 @@ body {
 
     #sidebar-wrapper {
         width: 0;
-        background-color: antiquewhite;
+        background-color: azure;
     }
 
     #wrapper.toggled #sidebar-wrapper {
