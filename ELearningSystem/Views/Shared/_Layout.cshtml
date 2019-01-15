@@ -35,20 +35,20 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink(ELearningSystem.Resources.Resource.strCourses, "Index", "Courses")</li>
-                    <li>@Html.ActionLink(ELearningSystem.Resources.Resource.strLectures, "LectureList", "Lecture")</li>
-                    <li>@Html.ActionLink(ELearningSystem.Resources.Resource.strTests, "Index", "TestCourse")</li>
-                    <li>@Html.ActionLink(ELearningSystem.Resources.Resource.strResults, "Index", "StudentResult")</li>
+                    <li>@Html.ActionLink("Курсове", "Index", "Courses")</li>
+                    <li>@Html.ActionLink("Лекции", "LectureList", "Lecture")</li>
+                    <li>@Html.ActionLink("Тестове", "Index", "TestCourse")</li>
+                    <li>@Html.ActionLink("Резултати", "Index", "StudentResult")</li>
 
 
-                    @if ((Session["User"] as ELearningSystem.Models.User) != null)
+                    @if ((Session["User"] as ELearningSystem.Models.User) != null )
                     {
-                        <li>@Html.ActionLink(ELearningSystem.Resources.Resource.strExit, "Logout", "UserRegistration")</li>
+                        <li>@Html.ActionLink("Изход", "Logout", "UserRegistration")</li>
                     }
                     else
                     {
-                        <li>@Html.ActionLink(ELearningSystem.Resources.Resource.strLogin, "Login", "UserRegistration") </li>
-                        <li>@Html.ActionLink(ELearningSystem.Resources.Resource.strRegistration, "Registration", "UserRegistration")</li>
+                        <li>@Html.ActionLink("Вход", "Login", "UserRegistration") </li>
+                        <li>@Html.ActionLink("Регистрация", "Registration", "UserRegistration")</li>
                     }
                     <li>
                         <a href="@Url.Action("ChangeLanguage", "Language", new { SelectedLanguage = "En" })">
@@ -61,7 +61,9 @@
                         </a>
                     </li>
                 </ul>
+
             </div>
+
 
 
             @*<div class="navbar-collapse collapse">
@@ -124,8 +126,7 @@
             </div>
         </div>
         @* Add Jquery Library *@
-        @Scripts.Render("~/bundles/custom")
-        @RenderSection("scripts", required: false)
+
         <script src="~/Scripts/jquery-1.10.2.min.js"></script>
         <script src="~/Scripts/jquery.signalR-2.4.0.min.js"></script>
         <script src="/signalr/hubs"></script>
@@ -282,7 +283,7 @@
                 // update notification
                 function updateNotification() {
                     $('#notiContent').empty();
-                    $('#notiContent').append($('<li>Зареждане...</li>'));
+                    $('#notiContent').append($('<li>Loading...</li>'));
 
                     $.ajax({
                         type: 'GET',
@@ -290,10 +291,10 @@
                         success: function (response) {
                             $('#notiContent').empty();
                             if (response.length == 0) {
-                                $('#notiContent').append($('<li>Няма нови известия</li>'));
+                                $('#notiContent').append($('<li>No data available</li>'));
                             }
                             $.each(response, function (index, value) {
-                                $('#notiContent').append($('<li>Добавена е нова лекция : ' + value.Title + '</li>'));
+                                $('#notiContent').append($('<li>New contact : ' + value.ContactName + ' (' + value.ContactNo + ') added</li>'));
                             });
                         },
                         error: function (error) {

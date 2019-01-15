@@ -1,15 +1,14 @@
 ﻿@model object
+
 @{
     dynamic mod = Model;
     var answer = mod.GetType().GetProperty("answer").GetValue(mod, null) as ELearningSystem.Models.Answer;
     var questionIndex = (int)mod.GetType().GetProperty("questionIndex").GetValue(mod, null);
     var answerIndex = (int)mod.GetType().GetProperty("answerIndex").GetValue(mod, null);
 }
-
 <div>
     @*@Html.RadioButton(string.Format("Qustions[{0}].Answer", questionIndex), false, false, new { data })*@
 
-    <input type="radio" data-index="@answerIndex"/>
+    <input type="radio" data-index="@answerIndex" />
     @Html.Label(answer.Content, htmlAttributes: new { @style = "Color:" + answer.Color + ";" })
 </div>
-

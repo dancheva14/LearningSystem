@@ -68,7 +68,7 @@
     @Html.DisplayFor(m => m.Content)
 </div>
 
-@if ((Session["User"] as ELearningSystem.Models.User) != null)
+@if (User != null && User.Identity.IsAuthenticated && User.IsAdmin)
 {
     <input class='button edit_recipient' type='button' value=@ELearningSystem.Resources.Resource.strEdit
            onclick="location.href='@Url.Action("Edit", "Lecture", new { Model.Id }, null)'" />

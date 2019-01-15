@@ -25,13 +25,3 @@
         }
     }
 </div>
-
-
-<script type="text/javascript">
-            $(document).on("click", ".question input[type='radio']", function () {
-                var clickedIndex = $(this).data("index");
-                $(this).closest(".question").find("input[type='hidden']").val(clickedIndex);
-
-            });
-
-</script>
