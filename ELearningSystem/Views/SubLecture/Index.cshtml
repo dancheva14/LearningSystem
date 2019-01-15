@@ -67,12 +67,3 @@
 <div>
     @Html.DisplayFor(m => m.Content)
 </div>
-
-@if (User != null && User.Identity.IsAuthenticated && User.IsAdmin)
-{
-    <input class='button edit_recipient' type='button' value=@ELearningSystem.Resources.Resource.strEdit
-           onclick="location.href='@Url.Action("Edit", "Lecture", new { Model.Id }, null)'" />
-
-    <input class='button edit_recipient' type='button' value=@ELearningSystem.Resources.Resource.strDelete
-           onclick="location.href='@Url.Action("Delete", "Lecture", new { Model.Id, Model.CourseId}, null )'" />
-}
