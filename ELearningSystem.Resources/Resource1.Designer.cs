@@ -106,6 +106,15 @@ namespace ELearningSystem.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Брой отговори.
+        /// </summary>
+        public static string strAnswerCount {
+            get {
+                return ResourceManager.GetString("strAnswerCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Бг.
         /// </summary>
         public static string strBulgarian {
@@ -120,6 +129,24 @@ namespace ELearningSystem.Resources {
         public static string strCheck {
             get {
                 return ResourceManager.GetString("strCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Провери верните отговори.
+        /// </summary>
+        public static string strCheckCorrectAnswers {
+            get {
+                return ResourceManager.GetString("strCheckCorrectAnswers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Изберете курс, към който да добавите лекция :.
+        /// </summary>
+        public static string strChooceCourseToAddLecture {
+            get {
+                return ResourceManager.GetString("strChooceCourseToAddLecture", resourceCulture);
             }
         }
         
@@ -147,6 +174,24 @@ namespace ELearningSystem.Resources {
         public static string strContact {
             get {
                 return ResourceManager.GetString("strContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Съдържание.
+        /// </summary>
+        public static string strContent {
+            get {
+                return ResourceManager.GetString("strContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Продължи.
+        /// </summary>
+        public static string strContinue {
+            get {
+                return ResourceManager.GetString("strContinue", resourceCulture);
             }
         }
         
@@ -196,6 +241,15 @@ namespace ELearningSystem.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Създай тест.
+        /// </summary>
+        public static string strCreateTest {
+            get {
+                return ResourceManager.GetString("strCreateTest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Дата.
         /// </summary>
         public static string strDate {
@@ -241,6 +295,15 @@ namespace ELearningSystem.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Редактирай потребителските права.
+        /// </summary>
+        public static string strEditUserRoles {
+            get {
+                return ResourceManager.GetString("strEditUserRoles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Електронна система за обучение.
         /// </summary>
         public static string strELearningSystem {
@@ -268,11 +331,47 @@ namespace ELearningSystem.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Въведете описание.
+        /// </summary>
+        public static string strEnterDescription {
+            get {
+                return ResourceManager.GetString("strEnterDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Въведете съдържанието на въпроса.
+        /// </summary>
+        public static string strEnterQuestion {
+            get {
+                return ResourceManager.GetString("strEnterQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Въведете въпроса със съответните му отговори.
+        /// </summary>
+        public static string strEnterQuestionAndAnswers {
+            get {
+                return ResourceManager.GetString("strEnterQuestionAndAnswers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Изход.
         /// </summary>
         public static string strExit {
             get {
                 return ResourceManager.GetString("strExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Потърси.
+        /// </summary>
+        public static string strFind {
+            get {
+                return ResourceManager.GetString("strFind", resourceCulture);
             }
         }
         
@@ -387,6 +486,15 @@ namespace ELearningSystem.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Съдържание на лекцията.
         /// </summary>
+        public static string strLectureContent {
+            get {
+                return ResourceManager.GetString("strLectureContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Съдържание на лекцията.
+        /// </summary>
         public static string strLectureDescription {
             get {
                 return ResourceManager.GetString("strLectureDescription", resourceCulture);
@@ -408,6 +516,15 @@ namespace ELearningSystem.Resources {
         public static string strLectures {
             get {
                 return ResourceManager.GetString("strLectures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Заглавие на лекцията.
+        /// </summary>
+        public static string strLectureTitle {
+            get {
+                return ResourceManager.GetString("strLectureTitle", resourceCulture);
             }
         }
         
@@ -574,6 +691,24 @@ namespace ELearningSystem.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Заглавие.
+        /// </summary>
+        public static string strTitle {
+            get {
+                return ResourceManager.GetString("strTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Качи снимките.
+        /// </summary>
+        public static string strUploadPhoto {
+            get {
+                return ResourceManager.GetString("strUploadPhoto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Потребителско име.
         /// </summary>
         public static string strUserName {
@@ -588,6 +723,15 @@ namespace ELearningSystem.Resources {
         public static string strUserNameError {
             get {
                 return ResourceManager.GetString("strUserNameError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Потребители.
+        /// </summary>
+        public static string strUsers {
+            get {
+                return ResourceManager.GetString("strUsers", resourceCulture);
             }
         }
         

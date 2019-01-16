@@ -32,7 +32,7 @@
             @Html.Hidden("Get", Url.Action("Get", "Lecture", new { Id = Model.FirstOrDefault().Id }))
 
 
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Потърси" title="Type in a name" style="min-width:600px;">
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="@ELearningSystem.Resources.Resource.strFind" title="Type in a name" style="min-width:600px;">
 
             <table class="table">
                 <thead>

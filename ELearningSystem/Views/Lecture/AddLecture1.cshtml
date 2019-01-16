@@ -1,12 +1,12 @@
 ﻿@model ELearningSystem.Models.Lecture
 
-<h2>Добави лекция</h2>
+<h2>@ELearningSystem.Resources.Resource.strAddLecture</h2>
 
 @using (Html.BeginForm())
 {
     @Html.HiddenFor(m => m.Id)
     <div>
-        @Html.Label("Курс: ")
+        @Html.Label(@ELearningSystem.Resources.Resource.strCourse + ": ")
         @Html.DropDownListFor(m => m.CourseId, new SelectList(new ELearningSystem.Services.CourseService().GetAllCourses(), "Id", "Name"), "Избери", htmlAttributes: new { @class = "custom-class-for-width" })
 
     </div>
@@ -14,7 +14,7 @@
 
         <div style="width:400px;margin-bottom:10px;float:left;">
 
-            <div class="editor-label">@Html.Label("Заглавие")</div>
+            <div class="editor-label">@Html.Label(@ELearningSystem.Resources.Resource.strTitle)</div>
             <div class="editor-field">
                 <input class="form-control"
                        id="Title"
@@ -24,11 +24,11 @@
             </div>
             <br />
 
-            <div class="editor-label">@Html.Label("Съдържание")</div>
+            <div class="editor-label">@Html.Label(@ELearningSystem.Resources.Resource.strContent)</div>
 
             <div>
                 @Html.TextAreaFor(model => model.Content, 20, 200, htmlAttributes: new { style = "width: 100%; max-width: 100%;" })
-                <span class="help-block">Въведете описание</span>
+                <span class="help-block">@ELearningSystem.Resources.Resource.strEnterDescription</span>
             </div>
         </div>
         <br />
@@ -42,7 +42,7 @@
 
 
         <div style="margin-top:20px; float:initial">
-            <input type="submit" value="Запази" style="width:400px; margin-top:30px;" />
+            <input type="submit" value="@ELearningSystem.Resources.Resource.strSave" style="width:400px; margin-top:30px;" />
         </div>
     </div>
 
@@ -53,7 +53,7 @@
     @Html.AntiForgeryToken()
     <div>
         <input type="file" name="files" multiple="multiple" />
-        <input type="submit" value="Качи снимката" />
+        <input type="submit" value="@ELearningSystem.Resources.Resource.strUploadPhoto" />
     </div>
 }
 

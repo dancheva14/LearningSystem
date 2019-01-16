@@ -14,6 +14,8 @@ namespace ELearningSystem
     {
 
         private LectureService lectureService = new LectureService();
+        private CourseService courseService = new CourseService();
+
         //Here we will add a function for register notification (will add sql dependency)
         public void RegisterNotification(DateTime currentTime)
         {
@@ -58,8 +60,13 @@ namespace ELearningSystem
 
         public List<Lecture> GetContacts(DateTime afterDate)
         {
-            return lectureService.GetAllLecture().Where(a => a.AddedOn > afterDate).OrderByDescending(a => a.AddedOn).ToList();
-
+            var lectures = lectureService.GetAllLecture().Where(a => a.AddedOn > afterDate).OrderByDescending(a => a.AddedOn).ToList();
+            var course = courseService.GetCourse(lectures.FirstOrDefault().CourseId);
+            foreach(var lecture in lectures)
+            {
+                lecture.Course = course;
+            }
+            return lectures;
         }
     }
 }

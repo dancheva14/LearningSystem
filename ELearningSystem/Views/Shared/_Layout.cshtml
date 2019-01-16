@@ -32,20 +32,20 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Курсове", "Index", "Courses")</li>
-                        <li>@Html.ActionLink("Лекции", "LectureList", "Lecture")</li>
-                        <li>@Html.ActionLink("Тестове", "Index", "TestCourse")</li>
-                        <li>@Html.ActionLink("Резултати", "Index", "StudentResult")</li>
+                        <li>@Html.ActionLink(@ELearningSystem.Resources.Resource.strCourses, "Index", "Courses")</li>
+                        <li>@Html.ActionLink(@ELearningSystem.Resources.Resource.strLectures, "LectureList", "Lecture")</li>
+                        <li>@Html.ActionLink(@ELearningSystem.Resources.Resource.strTests, "Index", "TestCourse")</li>
+                        <li>@Html.ActionLink(@ELearningSystem.Resources.Resource.strResults, "Index", "StudentResult")</li>
 
 
                         @if ((Session["User"] as ELearningSystem.Models.User) != null)
                         {
-                            <li>@Html.ActionLink("Изход", "Logout", "UserRegistration")</li>
+                            <li>@Html.ActionLink(@ELearningSystem.Resources.Resource.strExit, "Logout", "UserRegistration")</li>
                         }
                         else
                         {
-                            <li>@Html.ActionLink("Вход", "Login", "UserRegistration") </li>
-                            <li>@Html.ActionLink("Регистрация", "Registration", "UserRegistration")</li>
+                            <li>@Html.ActionLink(@ELearningSystem.Resources.Resource.strLogin, "Login", "UserRegistration") </li>
+                            <li>@Html.ActionLink(@ELearningSystem.Resources.Resource.strRegistration, "Registration", "UserRegistration")</li>
                         }
                         <li>
                             <a href="@Url.Action("ChangeLanguage", "Language", new { SelectedLanguage = "En" })">
@@ -77,15 +77,15 @@
                     <li>@Html.ActionLink(ELearningSystem.Resources.Resource.strTests, "Index", "TestCourse")</li>
                     @if ((Session["User"] as ELearningSystem.Models.User) != null && (Session["User"] as ELearningSystem.Models.User).Role.Name == ELearningSystem.Enums.Enums.UserRoles.Учител.ToString())
                     {
-                        <li> @Html.ActionLink("Създай тест", "InsertTest", "Tests") </li>
+                        <li> @Html.ActionLink(@ELearningSystem.Resources.Resource.strCreateTest, "InsertTest", "Tests") </li>
                     }
                     <li class="dropdown">
                         @if ((Session["User"] as ELearningSystem.Models.User) != null && (Session["User"] as ELearningSystem.Models.User).IsAdmin)
                         {
                             <a class="dropdown-toggle" role="button" aria-expanded="false" data-toggle="dropdown">Добави<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li>@Html.ActionLink("Добави курс", "AddCourse", "Courses")</li>
-                                <li>@Html.ActionLink("Добави лекция", "AddLecture1", "Lecture")</li>
+                                <li>@Html.ActionLink(@ELearningSystem.Resources.Resource.strAddCourse, "AddCourse", "Courses")</li>
+                                <li>@Html.ActionLink(@ELearningSystem.Resources.Resource.strAddLecture, "AddLecture1", "Lecture")</li>
                             </ul>
                         }
 
@@ -94,13 +94,13 @@
                         {
                             <a class="dropdown-toggle" role="button" aria-expanded="false" data-toggle="dropdown">Редактирай/Премахни<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li>@Html.ActionLink("Курсове", "DeleteCourse", "EditDelete")</li>
-                                <li>@Html.ActionLink("Лекции", "DeleteLecture", "EditDelete")</li>
-                                <li>@Html.ActionLink("Тестове", "DeleteTest", "EditDelete")</li>
+                                <li>@Html.ActionLink(@ELearningSystem.Resources.Resource.strCourses, "DeleteCourse", "EditDelete")</li>
+                                <li>@Html.ActionLink(@ELearningSystem.Resources.Resource.strLectures, "DeleteLecture", "EditDelete")</li>
+                                <li>@Html.ActionLink(@ELearningSystem.Resources.Resource.strTests, "DeleteTest", "EditDelete")</li>
                             </ul>
 
 
-                        <li>@Html.ActionLink("Потребители", "EditUserRoles", "UserRegistration")</li>
+                        <li>@Html.ActionLink(@ELearningSystem.Resources.Resource.strUsers, "EditUserRoles", "UserRegistration")</li>
                     }
                     </ul>
                 </div>
@@ -280,7 +280,7 @@
                 // update notification
                 function updateNotification() {
                     $('#notiContent').empty();
-                    $('#notiContent').append($('<li>Loading...</li>'));
+                    $('#notiContent').append($('<li>Зареждане...</li>'));
 
                     $.ajax({
                         type: 'GET',
@@ -288,10 +288,10 @@
                         success: function (response) {
                             $('#notiContent').empty();
                             if (response.length == 0) {
-                                $('#notiContent').append($('<li>No data available</li>'));
+                                $('#notiContent').append($('<li>Няма нови известия</li>'));
                             }
                             $.each(response, function (index, value) {
-                                $('#notiContent').append($('<li>New contact : ' + value.ContactName + ' (' + value.ContactNo + ') added</li>'));
+                                $('#notiContent').append($('<li>Добавена е нова лекция : "' + value.Title + '" към курс "' + value.Course.Name + '"</li>'));
                             });
                         },
                         error: function (error) {

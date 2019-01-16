@@ -22,5 +22,6 @@ namespace ELearningSystem.Models
 
         public DateTime AddedOn { get; set; }
 
+        public Course Course { get; set; }
     }
 }

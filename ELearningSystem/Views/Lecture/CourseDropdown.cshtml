@@ -7,10 +7,10 @@
 @using (Html.BeginForm("CoursesDropdown", "Lecture"))
 {
     <div>
-        @Html.Label("Изберете курс, към който искате да добавите лекция: ")
+        @Html.Label(@ELearningSystem.Resources.Resource.strChooceCourseToAddLecture)
     </div>
     <div>
-        @Html.Label("Курсове: ")
+        @Html.Label(@ELearningSystem.Resources.Resource.strCourses + ":")
         @Html.DropDownListFor(m => m.CourseId, new SelectList(new ELearningSystem.Services.CourseService().GetAllCourses(), "Id", "Name"), "Избери", htmlAttributes: new { @class = "custom-class-for-width" })
     </div>
 
@@ -19,7 +19,7 @@
         @Html.HiddenFor(m => m.Lecture.CourseId)
         <div>
             <div>
-                @Html.Label("Заглавие на лекцията: ")
+                @Html.Label(@ELearningSystem.Resources.Resource.strLectureTitle + ": ")
             </div>
             <div>
                 @Html.TextBoxFor(s => s.Lecture.Title)
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div>
-            @Html.Label("Съдържание на лекцията: ")
+            @Html.Label(@ELearningSystem.Resources.Resource.strLectureContent + ": ")
             <div>
                 @Html.TextAreaFor(model => model.Lecture.Content, 10, 40, htmlAttributes: new { style = "width: 100%; max-width: 100%;" })
                 <span class="help-block">@ELearningSystem.Resources.Resource.strInsertLectureDescription</span>
@@ -44,7 +44,7 @@
     @Html.AntiForgeryToken()
     <div>
         <input type="file" name="files" multiple="multiple" />
-        <input type="submit" value="Качи снимката" />
+        <input type="submit" value="@ELearningSystem.Resources.Resource.strUploadPhoto" />
     </div>
 }
 

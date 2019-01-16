@@ -11,29 +11,29 @@
     <div style="width:900px;margin-bottom:10px;">
         @Html.HiddenFor(m => m.Id)
         <div>
-            @Html.Label("Курс: ")
+            @Html.Label(@ELearningSystem.Resources.Resource.strCourse +": ")
             @Html.DropDownListFor(m => m.CourseId, new SelectList(new ELearningSystem.Services.CourseService().GetAllCourses(), "Id", "Name"), "Избери", htmlAttributes: new { @class = "custom-class-for-width" })
 
         </div>
         <div style="width:400px;margin-bottom:10px;float:left;">
 
-            <div class="editor-label">@Html.Label("Заглавие")</div>
+            <div class="editor-label">@Html.Label(@ELearningSystem.Resources.Resource.strTitle)</div>
             <div class="editor-field">
                 <input class="form-control"
                        id="Title"
                        name="Title"
                        type="text"
-                       placeholder="Име" />
+                       placeholder="@ELearningSystem.Resources.Resource.strName" />
             </div>
             <br />
 
-            <div class="editor-label">@Html.Label("Брой въпроси")</div>
+            <div class="editor-label">@Html.Label(@ELearningSystem.Resources.Resource.strAnswerCount)</div>
             <div class="editor-field">
                 <input class="form-control"
                        id="QuestionCount"
                        name="QuestionCount"
                        type="text"
-                       placeholder="Брой въпроси" />
+                       placeholder="@ELearningSystem.Resources.Resource.strAnswerCount" />
             </div>
             <br />
         </div>
@@ -48,7 +48,7 @@
 
 
         <div style="margin-top:20px; float:initial">
-            <input type="submit" value="Продължи" style="width:400px; margin-top:30px;" />
+            <input type="submit" value="@ELearningSystem.Resources.Resource.strContinue" style="width:400px; margin-top:30px;" />
         </div>
     </div>
 

@@ -8,7 +8,7 @@
     <span><b>@ViewData["Message"]</b></span>
 }
 
-<h2>Тестове</h2>
+    <h2>@ELearningSystem.Resources.Resource.strTests</h2>
 
 <div class="courses-list">
 
@@ -18,7 +18,7 @@
         {
             <tr>
                 <td> @Html.Label(item.Title)</td>
-                <td><a href="@Url.Action("DeleteTest", "EditDelete", new { id = item.Id }, null)">Изтрии</a> </td>
+                <td><a href="@Url.Action("DeleteTest", "EditDelete", new { id = item.Id }, null)">@ELearningSystem.Resources.Resource.strDelete</a> </td>
             </tr>
         }
     </table>

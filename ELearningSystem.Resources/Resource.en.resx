@@ -300,4 +300,52 @@
   <data name="strWrongUserNameOrPassword" xml:space="preserve">
     <value>Your username and/or password is wrong.</value>
   </data>
+  <data name="strAnswerCount" xml:space="preserve">
+    <value>Answers count</value>
+  </data>
+  <data name="strCheckCorrectAnswers" xml:space="preserve">
+    <value>Check correct answers</value>
+  </data>
+  <data name="strChooceCourseToAddLecture" xml:space="preserve">
+    <value>Chooce course to add lecture :</value>
+  </data>
+  <data name="strContent" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="strContinue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="strEditUserRoles" xml:space="preserve">
+    <value>Edit user roles</value>
+  </data>
+  <data name="strEnterDescription" xml:space="preserve">
+    <value>Enter description</value>
+  </data>
+  <data name="strEnterQuestion" xml:space="preserve">
+    <value>Enter question</value>
+  </data>
+  <data name="strEnterQuestionAndAnswers" xml:space="preserve">
+    <value>Enter question and answers</value>
+  </data>
+  <data name="strFind" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="strLectureContent" xml:space="preserve">
+    <value>Lecture content</value>
+  </data>
+  <data name="strLectureTitle" xml:space="preserve">
+    <value>Lecture title</value>
+  </data>
+  <data name="strTitle" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="strUploadPhoto" xml:space="preserve">
+    <value>Upload photos</value>
+  </data>
+  <data name="strCreateTest" xml:space="preserve">
+    <value>Create test</value>
+  </data>
+  <data name="strUsers" xml:space="preserve">
+    <value>Users</value>
+  </data>
 </root>

@@ -303,4 +303,52 @@
   <data name="strWrongAnswers" xml:space="preserve">
     <value>Грешни отговори:</value>
   </data>
+  <data name="strAnswerCount" xml:space="preserve">
+    <value>Брой отговори</value>
+  </data>
+  <data name="strCheckCorrectAnswers" xml:space="preserve">
+    <value>Провери верните отговори</value>
+  </data>
+  <data name="strChooceCourseToAddLecture" xml:space="preserve">
+    <value>Изберете курс, към който да добавите лекция :</value>
+  </data>
+  <data name="strContent" xml:space="preserve">
+    <value>Съдържание</value>
+  </data>
+  <data name="strContinue" xml:space="preserve">
+    <value>Продължи</value>
+  </data>
+  <data name="strEditUserRoles" xml:space="preserve">
+    <value>Редактирай потребителските права</value>
+  </data>
+  <data name="strEnterDescription" xml:space="preserve">
+    <value>Въведете описание</value>
+  </data>
+  <data name="strEnterQuestion" xml:space="preserve">
+    <value>Въведете съдържанието на въпроса</value>
+  </data>
+  <data name="strEnterQuestionAndAnswers" xml:space="preserve">
+    <value>Въведете въпроса със съответните му отговори</value>
+  </data>
+  <data name="strFind" xml:space="preserve">
+    <value>Потърси</value>
+  </data>
+  <data name="strLectureContent" xml:space="preserve">
+    <value>Съдържание на лекцията</value>
+  </data>
+  <data name="strLectureTitle" xml:space="preserve">
+    <value>Заглавие на лекцията</value>
+  </data>
+  <data name="strTitle" xml:space="preserve">
+    <value>Заглавие</value>
+  </data>
+  <data name="strUploadPhoto" xml:space="preserve">
+    <value>Качи снимките</value>
+  </data>
+  <data name="strCreateTest" xml:space="preserve">
+    <value>Създай тест</value>
+  </data>
+  <data name="strUsers" xml:space="preserve">
+    <value>Потребители</value>
+  </data>
 </root>

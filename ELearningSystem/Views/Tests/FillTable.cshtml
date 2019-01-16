@@ -9,14 +9,14 @@
 {
     <div style="margin-bottom:10px;float:left;">
 
-        <div class="editor-label">@Html.Label("Въведете въпроса със съответните му отговори")</div>
+        <div class="editor-label">@Html.Label(@ELearningSystem.Resources.Resource.strEnterQuestionAndAnswers)</div>
         <div class="editor-field">
             <input class="form-control"
                    style="min-width:700px;"
                    id="Content"
                    name="Content"
                    type="text"
-                   placeholder="Въведете съдържанието на въпроса" />
+                   placeholder="@ELearningSystem.Resources.Resource.strEnterQuestion" />
         </div>
         <br />
         @for (int i = 0; i < 4; i++)
