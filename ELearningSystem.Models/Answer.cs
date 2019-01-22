@@ -15,5 +15,9 @@ namespace ELearningSystem.Models
         public bool IsChecked { get; set; }
 
         public string Color { get; set; }
+
+        public bool Selected { get; set; }
+
+        public bool IsSelected { get; set; }
     }
 }

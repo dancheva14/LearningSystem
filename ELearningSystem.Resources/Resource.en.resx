@@ -348,4 +348,7 @@
   <data name="strUsers" xml:space="preserve">
     <value>Users</value>
   </data>
+  <data name="strQuestionCount" xml:space="preserve">
+    <value>Question count</value>
+  </data>
 </root>

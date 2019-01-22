@@ -6,7 +6,7 @@
 {
     @Html.HiddenFor(m => m.Id)
     <div>
-        @Html.Label(@ELearningSystem.Resources.Resource.strCourse + ": ")
+        @Html.Label(@ELearningSystem.Resources.Resource.strCourse)
         @Html.DropDownListFor(m => m.CourseId, new SelectList(new ELearningSystem.Services.CourseService().GetAllCourses(), "Id", "Name"), "Избери", htmlAttributes: new { @class = "custom-class-for-width" })
 
     </div>

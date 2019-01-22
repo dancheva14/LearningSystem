@@ -619,6 +619,15 @@ namespace ELearningSystem.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Брой въпроси.
+        /// </summary>
+        public static string strQuestionCount {
+            get {
+                return ResourceManager.GetString("strQuestionCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Регистрирай.
         /// </summary>
         public static string strRegister {

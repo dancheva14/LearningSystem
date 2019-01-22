@@ -2,13 +2,11 @@
 @using ELearningSystem.Models
 @{
     ViewBag.Title = "FillTable";
-
 }
 
 @using (Html.BeginForm())
 {
     <div style="margin-bottom:10px;float:left;">
-
         <div class="editor-label">@Html.Label(@ELearningSystem.Resources.Resource.strEnterQuestionAndAnswers)</div>
         <div class="editor-field">
             <input class="form-control"
@@ -19,20 +17,22 @@
                    placeholder="@ELearningSystem.Resources.Resource.strEnterQuestion" />
         </div>
         <br />
-        @for (int i = 0; i < 4; i++)
+        @for (var j = 0; j < 4; j++)
         {
-            <div style="width:750px;">
-                @Html.RadioButton("isChecked", i)
-                @Html.TextBoxFor(m => m.Answers[i].Content, htmlAttributes: new { @style = "min-width:680px;" })
+            <div>
+                @Html.CheckBoxFor(m => Model.Answers[j].IsChecked)
+                @Html.TextBoxFor(m => m.Answers[j].Content, htmlAttributes: new { @style = "min-width:350px;" })
+
+                @Html.HiddenFor(m => m.Id)
+
             </div>
-            <br></br>
+
+
         }
     </div>
-
     <div style="">
-        <input type="submit" value="@ViewBag.SubmitValue" style="width:400px; margin-top:30px;" />
+        <input type="submit" value="@ViewBag.SubmitValue" style="width:400px; margin-top:320px;" />
     </div>
-
 }
 
 <style>

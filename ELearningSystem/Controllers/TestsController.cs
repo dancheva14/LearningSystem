@@ -97,7 +97,6 @@ namespace ELearningSystem.Controllers
                 test.Questions[i].Id = CurrentTest.Questions[i].Id;
             }
 
-            Session["CurrentTest"] = test;
             var user = Session["USER"] as User;
             int correctAnswers = GradeTest(test);
             var realTest = testService.GetTest(test.Id);
@@ -105,11 +104,10 @@ namespace ELearningSystem.Controllers
             test.Points = realTest.Points;
             test.Title = realTest.Title;
             test.QuestionCount = test.Questions.Count();
+            Session["CurrentTest"] = test;
             var testR = new TestResult();
 
-
             var testResult = new TestResultViewModel();
-
 
             DateTime date = DateTime.Now; // will give the date for today
             string dateWithFormat = date.ToLongDateString();
@@ -118,7 +116,7 @@ namespace ELearningSystem.Controllers
             testResult.UserId = user.Id;
             testResult.CorrectAnswers = correctAnswers;
             testResult.EmptyAnswers = EmptyAnswers(test);
-            testResult.WrongAnswers = test.QuestionCount - (testResult.EmptyAnswers + correctAnswers);
+            testResult.WrongAnswers = test.Questions.Select(q => q.Answers.Where(a => a.IsSelected).Count()).Sum() - (testResult.EmptyAnswers + correctAnswers);
             testResult.Procent = ((test.QuestionCount - correctAnswers) / test.QuestionCount) * 100;
 
             double studentGrade = ((correctAnswers * 10) / (test.Points)) * 6;
@@ -180,52 +178,72 @@ namespace ELearningSystem.Controllers
         public ActionResult CheckCorrectAnswers()
         {
             var currentTest = Session["CurrentTest"] as Test;
+            var realTest = GetTest(currentTest.Id);
             var test = new Test();
 
             test = currentTest;
 
 
-            foreach (var question in test.Questions)
-            {
-                question.Answers = testService.GetQuestionAnswers(question.Id);
-            }
+            //foreach (var question in test.Questions)
+            //{
+            //    question.Answers = testService.GetQuestionAnswers(question.Id);
+            //}
 
-            foreach (var question in test.Questions)
+            for (int i = 0; i < test.Questions.Count(); i++)
             {
-                if (question.Answer == question.RightAnswerIndex)
-                    question.Answers[question.Answer - 1].Color = "Green";
-                else
+                for (int j = 0; j < test.Questions[i].Answers.Count(); j++)
                 {
-                    question.Answers[question.RightAnswerIndex - 1].Color = "Green";
-                    if (question.Answer != 0)
-                        question.Answers[question.Answer - 1].Color = "Red";
+                    if (test.Questions[i].Answers[j].IsSelected && realTest.Questions[i].Answers[j].IsChecked)
+                        test.Questions[i].Answers[j].Color = "Green";
+
+                    if (test.Questions[i].Answers[j].IsSelected && !realTest.Questions[i].Answers[j].IsChecked)
+                        test.Questions[i].Answers[j].Color = "Red";
+
+                    if(!test.Questions[i].Answers[j].IsSelected && realTest.Questions[i].Answers[j].IsChecked)
+                        test.Questions[i].Answers[j].Color = "Green";
+
                 }
             }
+
             Session["CurrentTest"] = test;
 
             return View("CheckCorrectAnswers", test);
         }
 
+        private Test GetTest(int testId)
+        {
+            var realTest = testService.GetTest(testId);
+            realTest.Questions = testService.GetTestQuestions(testId);
+            foreach (var q in realTest.Questions)
+            {
+                q.Answers = testService.GetQuestionAnswers(q.Id);
+            }
+
+            return realTest;
+        }
+
         private int GradeTest(Test test)
         {
+            var realTest = GetTest(test.Id);
+
             int countRightAnswers = 0;
             int countWrongAnswers = 0;
             if (test.Questions == null)
                 return 0;
+
             for (int i = 0; i < test.Questions.Count(); i++)
             {
-                if (test.Questions[i].Answer == 0)
+                for (int j = 0; j < test.Questions[i].Answers.Count(); j++)
                 {
-                }
-                else if ((test.Questions[i].Answer) == CurrentTest.Questions[i].RightAnswerIndex)
-                {
-                    countRightAnswers++;
-                }
-                else
-                {
-                    countWrongAnswers++;
+                    if (test.Questions[i].Answers[j].IsSelected && realTest.Questions[i].Answers[j].IsChecked)
+                    {
+                        countRightAnswers++;
+                    }
+                    if (test.Questions[i].Answers[j].IsSelected && !realTest.Questions[i].Answers[j].IsChecked)
+                        countWrongAnswers++;
                 }
             }
+
             return countRightAnswers;
         }
 
@@ -236,11 +254,10 @@ namespace ELearningSystem.Controllers
                 return 0;
             for (int i = 0; i < test.Questions.Count(); i++)
             {
-                if (test.Questions[i].Answer == 0)
-                {
+                if (test.Questions[i].Answers.Select(a => a.IsSelected).Count() == 0)
                     countEmptyAnswers++;
-                }
             }
+
             return countEmptyAnswers;
         }
 
@@ -272,11 +289,11 @@ namespace ELearningSystem.Controllers
         public ActionResult FillTable(Question question, FormCollection f)
         {
 
-            int index = Convert.ToInt32(Request.Form["isChecked"]);
+            //int index = Convert.ToInt32(Request.Form["isChecked"]);
             var test = Session["Test"] as Test;
             if (test.Questions == null)
                 test.Questions = new List<Question>();
-            question.RightAnswerIndex = index + 1;
+            //question.RightAnswerIndex = index + 1;
 
             test.Questions.Add(question);
             Session["Test"] = test;
@@ -301,8 +318,7 @@ namespace ELearningSystem.Controllers
 
         public void SaveTest(Test test)
         {
-            test.Points = test.QuestionCount * 10;
-
+            test.Points = test.Questions.Select(q => q.Answers.Where(a => a.IsChecked).Count()).Sum() * 10;
 
             testService.InsertTest(test);
 

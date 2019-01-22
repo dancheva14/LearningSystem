@@ -23,5 +23,7 @@ namespace ELearningSystem.Models
         public int AnswersCount { get; set; }
 
         public int QuestionTypeId { get; set; }
+
+        public string SelectedAnswer { get; set; }
     }
 }

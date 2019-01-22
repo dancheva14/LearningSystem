@@ -351,4 +351,7 @@
   <data name="strUsers" xml:space="preserve">
     <value>Потребители</value>
   </data>
+  <data name="strQuestionCount" xml:space="preserve">
+    <value>Брой въпроси</value>
+  </data>
 </root>

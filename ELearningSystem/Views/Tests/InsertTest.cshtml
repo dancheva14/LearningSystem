@@ -11,7 +11,7 @@
     <div style="width:900px;margin-bottom:10px;">
         @Html.HiddenFor(m => m.Id)
         <div>
-            @Html.Label(@ELearningSystem.Resources.Resource.strCourse +": ")
+            @Html.Label(@ELearningSystem.Resources.Resource.strCourse )
             @Html.DropDownListFor(m => m.CourseId, new SelectList(new ELearningSystem.Services.CourseService().GetAllCourses(), "Id", "Name"), "Избери", htmlAttributes: new { @class = "custom-class-for-width" })
 
         </div>
@@ -27,13 +27,13 @@
             </div>
             <br />
 
-            <div class="editor-label">@Html.Label(@ELearningSystem.Resources.Resource.strAnswerCount)</div>
+            <div class="editor-label">@Html.Label(@ELearningSystem.Resources.Resource.strQuestionCount)</div>
             <div class="editor-field">
                 <input class="form-control"
                        id="QuestionCount"
                        name="QuestionCount"
                        type="text"
-                       placeholder="@ELearningSystem.Resources.Resource.strAnswerCount" />
+                       placeholder="@ELearningSystem.Resources.Resource.strQuestionCount" />
             </div>
             <br />
         </div>
