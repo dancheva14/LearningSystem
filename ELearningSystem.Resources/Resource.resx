@@ -354,4 +354,7 @@
   <data name="strQuestionCount" xml:space="preserve">
     <value>Брой въпроси</value>
   </data>
+  <data name="strEditDelete" xml:space="preserve">
+    <value>Редактирай/Премахни</value>
+  </data>
 </root>

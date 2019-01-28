@@ -82,7 +82,7 @@
                     <li class="dropdown">
                         @if ((Session["User"] as ELearningSystem.Models.User) != null && (Session["User"] as ELearningSystem.Models.User).IsAdmin)
                         {
-                            <a class="dropdown-toggle" role="button" aria-expanded="false" data-toggle="dropdown">Добави<span class="caret"></span></a>
+                        <a class="dropdown-toggle" role="button" aria-expanded="false" data-toggle="dropdown">@ELearningSystem.Resources.Resource.strAdd<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li>@Html.ActionLink(@ELearningSystem.Resources.Resource.strAddCourse, "AddCourse", "Courses")</li>
                                 <li>@Html.ActionLink(@ELearningSystem.Resources.Resource.strAddLecture, "AddLecture1", "Lecture")</li>
@@ -92,7 +92,7 @@
                     <li class="dropdown">
                         @if ((Session["User"] as ELearningSystem.Models.User) != null && (Session["User"] as ELearningSystem.Models.User).IsAdmin)
                         {
-                            <a class="dropdown-toggle" role="button" aria-expanded="false" data-toggle="dropdown">Редактирай/Премахни<span class="caret"></span></a>
+                        <a class="dropdown-toggle" role="button" aria-expanded="false" data-toggle="dropdown">@ELearningSystem.Resources.Resource.strEditDelete<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li>@Html.ActionLink(@ELearningSystem.Resources.Resource.strCourses, "DeleteCourse", "EditDelete")</li>
                                 <li>@Html.ActionLink(@ELearningSystem.Resources.Resource.strLectures, "DeleteLecture", "EditDelete")</li>

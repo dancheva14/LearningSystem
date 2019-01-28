@@ -351,4 +351,7 @@
   <data name="strQuestionCount" xml:space="preserve">
     <value>Question count</value>
   </data>
+  <data name="strEditDelete" xml:space="preserve">
+    <value>Edit \ Delete</value>
+  </data>
 </root>

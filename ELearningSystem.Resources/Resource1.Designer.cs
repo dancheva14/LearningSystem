@@ -286,6 +286,15 @@ namespace ELearningSystem.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Редактирай/Премахни.
+        /// </summary>
+        public static string strEditDelete {
+            get {
+                return ResourceManager.GetString("strEditDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Редактирай лекцията.
         /// </summary>
         public static string strEditLecture {
