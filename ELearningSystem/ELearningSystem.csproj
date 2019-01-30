@@ -214,6 +214,7 @@
     <Compile Include="Controllers\TestCourseController.cs" />
     <Compile Include="Controllers\TestsController.cs" />
     <Compile Include="Controllers\UserRegistrationController.cs" />
+    <Compile Include="Encryptor.cs" />
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

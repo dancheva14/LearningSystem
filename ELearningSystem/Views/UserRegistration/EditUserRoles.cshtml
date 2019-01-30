@@ -3,21 +3,96 @@
     ViewBag.Title = "EditUserRoles";
 }
 
+@if (ViewBag.Message != null)
+{
+    <span><b>@ViewData["Message"]</b></span>
+}
+
 <h2>@ELearningSystem.Resources.Resource.strEditUserRoles</h2>
 
-@foreach (var user in Model)
-{
-    <div>
-        @Html.Label(user.UserName)
-        @if (user.IsAdmin)
+<div class="courses-list">
+
+    <table>
+        <tr></tr>
+        @foreach (var item in Model)
         {
-            @Html.Label(" - Потребителят е администратор - ")
-            <a href="@Url.Action("EditUserRoles1", "UserRegistration", new { id = user.Id}, null)">Направи обикновен потребител</a>
+            <tr>
+                <td> @Html.Label(item.UserName)</td>
+                <td> @Html.Label(item.Role.Name)</td>
+                @if (!item.IsAdmin)
+                {
+                    <td><a href="@Url.Action("EditUserRoles1", "UserRegistration", new { id = item.Id }, null)">Добави администраторски права</a> </td>
+                }
+                else
+                {
+                    <td><a href="@Url.Action("EditUserRoles1", "UserRegistration", new { id = item.Id }, null)">Премахни администраторски права</a></td>
+                }
+            </tr>
         }
-        else
-        {
-            @Html.Label(" - Потребителят не е администратор - ")
-            <a href="@Url.Action("EditUserRoles", "UserRegistration", new { id = user.Id}, null)" style="margin-right: 10px; margin-left:10px;">Направи администратор</a>
+    </table>
+</div>
+
+<style>
+    #more {
+        display: none;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 2px solid #ddd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 16px;
+        min-width:200px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2
+    }
+
+    .tab {
+        float: left;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+        width: 20%;
+        height: 300px;
+    }
+
+        /* Style the buttons that are used to open the tab content */
+        .tab button {
+            display: block;
+            background-color: inherit;
+            color: black;
+            padding: 22px 16px;
+            width: 100%;
+            border: none;
+            outline: none;
+            text-align: left;
+            cursor: pointer;
+            transition: 0.3s;
         }
-    </div>
-}
+
+            /* Change background color of buttons on hover */
+            .tab button:hover {
+                background-color: #ddd;
+            }
+
+            /* Create an active/current "tab button" class */
+            .tab button.active {
+                background-color: #ccc;
+            }
+
+    /* Style the tab content */
+    .tabcontent {
+        float: left;
+        padding: 0px 12px;
+        border: 1px solid #ccc;
+        width: 80%;
+        border-left: none;
+        height: 300px;
+    }
+</style>

@@ -3,6 +3,8 @@ using ELearningSystem.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -43,18 +45,20 @@ namespace ELearningSystem.Controllers
         {
             //if (ModelState.IsValid)
             //{
-                if (!String.IsNullOrEmpty(user.UserName))
+            if (!String.IsNullOrEmpty(user.UserName))
+            {
+                user.Password = Encrypt(user.Password);
+                var authenticatedUser = userService.GetUserByNameAndPass(user);
+                
+                if (authenticatedUser != null)
                 {
-                    var authenticatedUser = userService.GetUserByNameAndPass(user);
-                    if (authenticatedUser != null)
-                    {
-                        return HandleSuccessfulLogin(authenticatedUser, returnUrl);
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "Потребителското име и/или паролата са невалидни. Опитайте отново.");
-                    }
+                    return HandleSuccessfulLogin(authenticatedUser, returnUrl);
                 }
+                else
+                {
+                    ModelState.AddModelError("", "Потребителското име и/или паролата са невалидни. Опитайте отново.");
+                }
+            }
             //}
             //else
             //{
@@ -79,13 +83,15 @@ namespace ELearningSystem.Controllers
         [HttpPost]
         public ActionResult Registration(User user)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 if (user.Email == null)
                     user.Email = string.Empty;
+
+                user.Password = Encrypt(user.Password);
                 userService.InsertUser(user);
                 return RedirectToAction("Login", "UserRegistration");
-            }
+            //}
             return View();
         }
 
@@ -110,8 +116,7 @@ namespace ELearningSystem.Controllers
         {
             user.Role = userService.GetRole(user.RoleId);
             User = user;
-
-            //FormsAuthentication.SetAuthCookie
+            
             FormsAuthentication.SetAuthCookie(user.UserName, false);
 
             if (!string.IsNullOrEmpty(returnUrl))
@@ -138,6 +143,10 @@ namespace ELearningSystem.Controllers
             }
 
             var users = userService.GetAllUsers();
+            foreach (var user in users)
+            {
+                user.Role = userService.GetRole(user.RoleId);
+            }
             return View(users);
         }
 
@@ -146,12 +155,53 @@ namespace ELearningSystem.Controllers
             if (id != 0)
             {
                 var user = userService.GetUserById(id);
-                user.IsAdmin = false;
+                user.IsAdmin = !user.IsAdmin;
                 userService.UpdateUser(user);
             }
             var users = userService.GetAllUsers();
             return RedirectToAction("EditUserRoles");
         }
 
+        static string key { get; set; } = "A!9HHhi%XjjYY4YP2@Nob009X";
+
+        public static string Encrypt(string text)
+        {
+            using (var md5 = new MD5CryptoServiceProvider())
+            {
+                using (var tdes = new TripleDESCryptoServiceProvider())
+                {
+                    tdes.Key = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
+                    tdes.Mode = CipherMode.ECB;
+                    tdes.Padding = PaddingMode.PKCS7;
+
+                    using (var transform = tdes.CreateEncryptor())
+                    {
+                        byte[] textBytes = UTF8Encoding.UTF8.GetBytes(text);
+                        byte[] bytes = transform.TransformFinalBlock(textBytes, 0, textBytes.Length);
+                        return Convert.ToBase64String(bytes, 0, bytes.Length);
+                    }
+                }
+            }
+        }
+
+        public static string Decrypt(string cipher)
+        {
+            using (var md5 = new MD5CryptoServiceProvider())
+            {
+                using (var tdes = new TripleDESCryptoServiceProvider())
+                {
+                    tdes.Key = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
+                    tdes.Mode = CipherMode.ECB;
+                    tdes.Padding = PaddingMode.PKCS7;
+
+                    using (var transform = tdes.CreateDecryptor())
+                    {
+                        byte[] cipherBytes = Convert.FromBase64String(cipher);
+                        byte[] bytes = transform.TransformFinalBlock(cipherBytes, 0, cipherBytes.Length);
+                        return UTF8Encoding.UTF8.GetString(bytes);
+                    }
+                }
+            }
+        }
     }
 }
